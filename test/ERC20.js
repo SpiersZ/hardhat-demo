@@ -1,3 +1,4 @@
+import "hardhat/console.sol";
 const {BigNumber} = require("ethers");
 const { expect } = require("chai");
 

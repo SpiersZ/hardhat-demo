@@ -6,29 +6,68 @@ require("@nomiclabs/hardhat-ethers");
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
+  defaultNetwork: "dev",
   solidity: {
-    version: "0.5.1", // 编译器版本
-    settings: {
-      optimizer: {
-        enabled: true,
-        runs: 200
+    compilers: [
+      {
+        version: "0.6.0", // 编译器版本
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200
+          }
+        }
+      },
+      {
+        version: "0.6.12", // 编译器版本
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200
+          }
+        }
+      },
+      {
+        version: "0.7.0", // 编译器版本
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200
+          }
+        },
+      },
+      {
+        version: "0.5.1", // 编译器版本
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200
+          }
+        }
       }
-    }
+    ]
   },
   networks: {
     hardhat: {
       forking: {
-        url: "https://bsc.getblock.io/mainnet/?api_key=85f5951b-9991-4125-9f61-c4e3031474ff", // 采用之前创建的rpc
-        blockNumber: 9311690, //指定fork的块高度
+        url: "https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161", // okChain
+        // blockNumber: 5115288, //指定fork的块高度
       },
       // 配置出块模式
       mining: {
         auto: false, // true：每个交易都在一个新块； false: 按照时间间隔出块
-        interval: 5000 // 出块间隔
+        interval: 2000 // 出块间隔
+      }
+    },
+    dev: {
+      url: "http://localhost:8545",
+      mining: {
+        auto: false,
+        interval: 2000
       }
     }
   },
   mocha: {
-    timeout: 20000, // 单元测试超时
+    timeout: 200000, // 单元测试超时
   }
 };
